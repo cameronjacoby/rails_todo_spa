@@ -1,0 +1,52 @@
+<div class="col-sm-2"></div>
+
+<div class="col-sm-8">
+  <h1>What do you need to do today?</h1>
+
+  <!-- CREATE -->
+  <form ng-submit="addToDo(newToDo)" class="new-form">
+    <p>
+      <input type="text" ng-model="newToDo.task" class="form-control" placeholder="Task" autofocus required>
+    </p>
+    <p>
+      <textarea ng-model="newToDo.description" class="form-control" placeholder="Description"></textarea>
+    </p>
+    <p>
+      <button class="btn btn-primary">Add Task</button>
+    </p>
+  </form>
+
+  <!-- SHOW -->
+  <div class="todos">
+    <div ng-repeat="toDo in toDos | orderBy: '-updated_at'" class="todo-box">
+      <div>
+        <p ng-hide="hideToDo"><strong>{{toDo.task}}</strong></p>
+        <p>
+          <span ng-hide="hideToDo" class="done">Done</span>
+          <span ng-hide="hideToDo" ng-click="showEditForm()" class="edit">Edit</span>
+
+          <!-- DELETE -->
+          <span ng-hide="hideToDo" ng-click="deleteToDo(toDo)" class="delete">Delete</span>
+        </p>
+
+        <!-- EDIT -->
+        <form ng-submit="editToDo(toDo)" ng-show="hideToDo">
+          <p>
+            <input type="text" ng-model="toDo.task" class="form-control" placeholder="Task" autofocus required>
+          </p>
+          <p>
+            <textarea ng-model="toDo.description" class="form-control" placeholder="Description"></textarea>
+          </p>
+          <p>
+            <button class="btn btn-primary">Update Task</button>
+          </p>
+        </form>
+
+        <p ng-hide="hideToDo">Description: {{toDo.description}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="col-sm-2"></div>

@@ -1,0 +1,39 @@
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  cursor: default;
+}
+
+.new-form {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.todos {
+  margin-top: 40px;
+}
+
+.todo-box {
+  display: inline-block;
+  width: 150px;
+  height: 200px;
+  overflow: scroll;
+  border-radius: 10px;
+  border: 1px solid #777777;
+  margin: 10px;
+  padding: 8px;
+  cursor: default;
+}
+
+.todo-box:hover {
+  background-color: #CCCCCC;
+}
+
+.done, .edit, .delete {
+  cursor: pointer;
+}
