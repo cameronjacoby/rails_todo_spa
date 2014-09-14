@@ -34,7 +34,7 @@ class ToDosController < ApplicationController
   end
 
   def to_do_params
-    params.require(:to_do).permit(:task, :description, :done)
+    params.require(:to_do).permit(:task, :details, :done)
   end
 
   def render_main_layout_if_format_html

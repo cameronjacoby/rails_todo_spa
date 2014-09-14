@@ -9,7 +9,7 @@
       <input type="text" ng-model="newToDo.task" class="form-control" placeholder="Task" autofocus required>
     </p>
     <p>
-      <textarea ng-model="newToDo.description" class="form-control" placeholder="Details"></textarea>
+      <textarea ng-model="newToDo.details" class="form-control" placeholder="Details"></textarea>
     </p>
     <p>
       <button class="btn btn-primary">Add Task</button>
@@ -18,9 +18,10 @@
 
   <!-- SHOW -->
   <div class="todos">
-    <div ng-repeat="toDo in toDos | orderBy: 'done'" ng-style="{backgroundColor: doneColor}" class="todo-box">
+    <div ng-repeat="toDo in toDos | orderBy: 'done'" ng-Dblclick="showEditForm()" ng-style="{backgroundColor: doneColor}" class="todo-box">
       <div>
         <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}"><strong>{{toDo.task}}</strong></p>
+
         <p>
           <span ng-hide="hideToDo" ng-click="markDone(toDo)" class="glyphicon glyphicon-ok done"></span>
 
@@ -36,14 +37,14 @@
             <input type="text" ng-model="toDo.task" class="form-control" placeholder="Task" autofocus required>
           </p>
           <p>
-            <textarea ng-model="toDo.description" class="form-control" placeholder="Details"></textarea>
+            <textarea ng-model="toDo.details" class="form-control" placeholder="Details"></textarea>
           </p>
           <p>
             <button class="btn btn-primary">Update Task</button>
           </p>
         </form>
 
-        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}">{{toDo.description}}</p>
+        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}">{{toDo.details}}</p>
 
         <p ng-show="done">{{toDo.done | formatToDo}}</p>
       </div>
