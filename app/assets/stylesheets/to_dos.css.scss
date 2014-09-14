@@ -1,10 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+
 .container {
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-h1 {
+#header {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
   cursor: default;
 }
 
@@ -12,6 +16,11 @@ h1 {
   width: 80%;
   margin: 0 auto;
   margin-top: 40px;
+}
+
+.red-btn {
+  color: #FFF;
+  background-color: #FD304E;
 }
 
 .todos {
@@ -38,4 +47,8 @@ h1 {
   cursor: pointer;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.done:hover, .edit:hover, .delete:hover {
+  color: #FD304E;
 }

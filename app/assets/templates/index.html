@@ -1,7 +1,7 @@
 <div class="col-sm-2"></div>
 
 <div class="col-sm-8">
-  <h1>What do you need to do today?</h1>
+  <h1 id="header">What do you need to do today?</h1>
 
   <!-- CREATE -->
   <form ng-submit="addToDo(newToDo)" class="new-form">
@@ -12,7 +12,7 @@
       <textarea ng-model="newToDo.details" class="form-control" placeholder="Details"></textarea>
     </p>
     <p>
-      <button class="btn btn-primary">Add Task</button>
+      <button class="btn red-btn">Add Task</button>
     </p>
   </form>
 
@@ -40,7 +40,7 @@
             <textarea ng-model="toDo.details" class="form-control" placeholder="Details"></textarea>
           </p>
           <p>
-            <button class="btn btn-primary">Update Task</button>
+            <button class="btn red-btn">Update Task</button>
           </p>
         </form>
 
