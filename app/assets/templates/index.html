@@ -18,11 +18,12 @@
 
   <!-- SHOW -->
   <div class="todos">
-    <div ng-repeat="toDo in toDos | orderBy: '-updated_at'" ng-style="{backgroundColor: doneColor}" class="todo-box">
+    <div ng-repeat="toDo in toDos | orderBy: 'done'" ng-style="{backgroundColor: doneColor}" class="todo-box">
       <div>
-        <p ng-hide="hideToDo"><strong>{{toDo.task}}</strong></p>
+        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}"><strong>{{toDo.task}}</strong></p>
         <p>
           <span ng-hide="hideToDo" ng-click="markDone(toDo)" class="glyphicon glyphicon-ok done"></span>
+
           <span ng-hide="hideToDo" ng-click="showEditForm()" class="glyphicon glyphicon-pencil edit"></span>
 
           <!-- DELETE -->
@@ -43,6 +44,8 @@
         </form>
 
         <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}">{{toDo.description}}</p>
+
+        <p ng-show="done">{{toDo.done | formatToDo}}</p>
       </div>
     </div>
   </div>

@@ -18,27 +18,31 @@ ToDoApp.controller "ToDosCtrl", ["$scope", "$http", ($scope, $http) ->
   $scope.toDos = []
 
   $scope.getToDos = ->
+    $scope.doneColor = {}
+    $scope.doneText = {}
     $http.get("/to_dos.json").success (data) ->
       $scope.toDos = data
 
   $scope.getToDos()
 
-  $scope.addToDo = ->
-    $http.post("/to_dos.json", $scope.newToDo).success (data) ->
+  $scope.addToDo = (newToDo) ->
+    newToDo.done = false
+    $http.post("/to_dos.json", newToDo).success (data) ->
       # make newToDo object empty
       $scope.newToDo = {}
       # add ToDo to ToDos array
       $scope.toDos.push(data)
 
   $scope.markDone = (toDo) ->
-    toDo.done = true
+    if !toDo.done
+      toDo.done = true
+      this.doneColor = "#EAEAEA"
+      this.doneText = "line-through"
+    else
+      toDo.done = false
+      this.doneColor = undefined
+      this.doneText = undefined
     $http.put("/to_dos/#{this.toDo.id}.json", toDo).success (data) ->
-    # if !this.doneText
-    #   this.doneText = "line-through"
-    #   this.doneColor = "#EAEAEA"
-    # else
-    #   this.doneText = undefined
-    #   this.doneColor = undefined
 
   $scope.deleteToDo = (toDo) ->
     conf = confirm "Are you sure you want to delete this task?"
@@ -54,6 +58,12 @@ ToDoApp.controller "ToDosCtrl", ["$scope", "$http", ($scope, $http) ->
     $http.put("/to_dos/#{this.toDo.id}.json", toDo).success (data) ->
 
 ]
+
+ToDoApp.filter 'formatToDo', ->
+  (done) ->
+    if done
+      this.doneColor = "#EAEAEA"
+      this.doneText = "line-through"
 
 # define config for CSRF token
 ToDoApp.config ["$httpProvider", ($httpProvider) ->
