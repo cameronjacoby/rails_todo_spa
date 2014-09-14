@@ -7,6 +7,9 @@ ToDoApp.config ["$routeProvider", "$locationProvider", ($routeProvider, $locatio
     .when "/",
       templateUrl: "index.html",
       controller: "ToDosCtrl"
+    .when "/to_dos/:id",
+      templateUrl: "show.html",
+      controller: "ShowCtrl"
   .otherwise
     redirectTo: "/"
 
@@ -56,6 +59,17 @@ ToDoApp.controller "ToDosCtrl", ["$scope", "$http", ($scope, $http) ->
   $scope.editToDo = (toDo) ->
     this.hideToDo = false
     $http.put("/to_dos/#{this.toDo.id}.json", toDo).success (data) ->
+
+]
+
+ToDoApp.controller "ShowCtrl", ["$scope", "$http", ($scope, $http) ->
+
+  $scope.showToDo = ->
+    $http.get("/to_dos/:id.json").success (data) ->
+      $scope.toDo = data
+      console.log($scope.toDo)
+
+  $scope.showToDo()
 
 ]
 
