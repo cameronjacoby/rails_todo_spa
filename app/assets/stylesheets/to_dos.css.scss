@@ -31,9 +31,11 @@ h1 {
 }
 
 .todo-box:hover {
-  background-color: #CCCCCC;
+  background-color: #EAEAEA;
 }
 
 .done, .edit, .delete {
   cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
 }

@@ -9,7 +9,7 @@
       <input type="text" ng-model="newToDo.task" class="form-control" placeholder="Task" autofocus required>
     </p>
     <p>
-      <textarea ng-model="newToDo.description" class="form-control" placeholder="Description"></textarea>
+      <textarea ng-model="newToDo.description" class="form-control" placeholder="Details"></textarea>
     </p>
     <p>
       <button class="btn btn-primary">Add Task</button>
@@ -18,15 +18,15 @@
 
   <!-- SHOW -->
   <div class="todos">
-    <div ng-repeat="toDo in toDos | orderBy: '-updated_at'" class="todo-box">
+    <div ng-repeat="toDo in toDos | orderBy: '-updated_at'" ng-style="{backgroundColor: doneColor}" class="todo-box">
       <div>
         <p ng-hide="hideToDo"><strong>{{toDo.task}}</strong></p>
         <p>
-          <span ng-hide="hideToDo" class="done">Done</span>
-          <span ng-hide="hideToDo" ng-click="showEditForm()" class="edit">Edit</span>
+          <span ng-hide="hideToDo" ng-click="markDone(toDo)" class="glyphicon glyphicon-ok done"></span>
+          <span ng-hide="hideToDo" ng-click="showEditForm()" class="glyphicon glyphicon-pencil edit"></span>
 
           <!-- DELETE -->
-          <span ng-hide="hideToDo" ng-click="deleteToDo(toDo)" class="delete">Delete</span>
+          <span ng-hide="hideToDo" ng-click="deleteToDo(toDo)" class="glyphicon glyphicon-trash delete"></span>
         </p>
 
         <!-- EDIT -->
@@ -35,14 +35,14 @@
             <input type="text" ng-model="toDo.task" class="form-control" placeholder="Task" autofocus required>
           </p>
           <p>
-            <textarea ng-model="toDo.description" class="form-control" placeholder="Description"></textarea>
+            <textarea ng-model="toDo.description" class="form-control" placeholder="Details"></textarea>
           </p>
           <p>
             <button class="btn btn-primary">Update Task</button>
           </p>
         </form>
 
-        <p ng-hide="hideToDo">Description: {{toDo.description}}</p>
+        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}">{{toDo.description}}</p>
       </div>
     </div>
   </div>

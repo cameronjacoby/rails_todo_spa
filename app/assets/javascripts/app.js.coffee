@@ -30,6 +30,16 @@ ToDoApp.controller "ToDosCtrl", ["$scope", "$http", ($scope, $http) ->
       # add ToDo to ToDos array
       $scope.toDos.push(data)
 
+  $scope.markDone = (toDo) ->
+    toDo.done = true
+    $http.put("/to_dos/#{this.toDo.id}.json", toDo).success (data) ->
+    # if !this.doneText
+    #   this.doneText = "line-through"
+    #   this.doneColor = "#EAEAEA"
+    # else
+    #   this.doneText = undefined
+    #   this.doneColor = undefined
+
   $scope.deleteToDo = (toDo) ->
     conf = confirm "Are you sure you want to delete this task?"
     if conf
