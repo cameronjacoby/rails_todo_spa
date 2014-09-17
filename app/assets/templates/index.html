@@ -20,7 +20,7 @@
   <div class="todos">
     <div ng-repeat="toDo in toDos | orderBy: 'done'" ng-Dblclick="showEditForm()" ng-style="{backgroundColor: doneColor}" class="todo-box">
       <div>
-        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}"><strong>{{toDo.task}}</strong></p>
+        <p ng-hide="hideToDo" ng-style="{textDecoration: doneText}"><strong><a href="/to_dos/{{toDo.id}}">{{toDo.task}}</a></strong></p>
 
         <p>
           <span ng-hide="hideToDo" ng-click="markDone(toDo)" class="glyphicon glyphicon-ok done"></span>

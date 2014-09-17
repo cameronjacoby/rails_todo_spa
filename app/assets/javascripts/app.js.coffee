@@ -62,12 +62,11 @@ ToDoApp.controller "ToDosCtrl", ["$scope", "$http", ($scope, $http) ->
 
 ]
 
-ToDoApp.controller "ShowCtrl", ["$scope", "$http", ($scope, $http) ->
+ToDoApp.controller "ShowCtrl", ["$scope", "$http", "$routeParams", ($scope, $http, $routeParams) ->
 
   $scope.showToDo = ->
-    $http.get("/to_dos/:id.json").success (data) ->
+    $http.get("/to_dos/#{$routeParams.id}.json").success (data) ->
       $scope.toDo = data
-      console.log($scope.toDo)
 
   $scope.showToDo()
 

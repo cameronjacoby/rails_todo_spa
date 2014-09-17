@@ -43,6 +43,15 @@
   background-color: #EAEAEA;
 }
 
+.todo-box a {
+  color: #333;
+}
+
+.todo-box a:hover {
+  color: #FD304E;
+  text-decoration: none;
+}
+
 .done, .edit, .delete {
   cursor: pointer;
   margin-left: 5px;
